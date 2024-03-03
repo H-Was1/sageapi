@@ -1,0 +1,272 @@
+[
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e30797662d"
+    },
+    "name": "karachi",
+    "weatherUrl": "https://www.accuweather.com/en/pk/karachi/261158/weather-forecast/261158",
+    "aqiUrl": "https://www.accuweather.com/en/pk/karachi/261158/air-quality-index/261158",
+    "aqiData": {
+      "quality": {
+        "scale": "Fair",
+        "index": "33",
+        "description": "The air quality is generally acceptable for most individuals. However, sensitive groups may experience minor to moderate symptoms from long-term exposure."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Sunshine and pleasant",
+      "tonight": " Clear",
+      "current": {
+        "temperature": "28°C",
+        "weather": "Sunny"
+      },
+      "wind": "WNW 7 km/h",
+      "collectionTime": "4:49 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e30797662e"
+    },
+    "name": "lahore",
+    "weatherUrl": "https://www.accuweather.com/en/pk/lahore/260622/weather-forecast/260622",
+    "aqiUrl": "https://www.accuweather.com/en/pk/lahore/260622/air-quality-index/260622",
+    "aqiData": {
+      "quality": {
+        "scale": "Poor",
+        "index": "97",
+        "description": "The air has reached a high level of pollution and is unhealthy for sensitive groups. Reduce time spent outside if you are feeling symptoms such as difficulty breathing or throat irritation."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Hazy sunshine",
+      "tonight": " Clear and chilly",
+      "current": {
+        "temperature": "20°C",
+        "weather": "Hazy sunshine"
+      },
+      "wind": "S 22 km/h",
+      "collectionTime": "4:50 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e30797662f"
+    },
+    "name": "islamabad",
+    "weatherUrl": "https://www.accuweather.com/en/pk/islamabad/258278/weather-forecast/258278",
+    "aqiUrl": "https://www.accuweather.com/en/pk/islamabad/258278/air-quality-index/258278",
+    "aqiData": {
+      "quality": {
+        "scale": "Poor",
+        "index": "81",
+        "description": "The air has reached a high level of pollution and is unhealthy for sensitive groups. Reduce time spent outside if you are feeling symptoms such as difficulty breathing or throat irritation."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Cool with clouds and breaks of sun; breezy this afternoon",
+      "tonight": " Clear and chilly",
+      "current": {
+        "temperature": "15°C",
+        "weather": "Partly sunny"
+      },
+      "wind": "E 24 km/h",
+      "collectionTime": "4:50 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976630"
+    },
+    "name": "rawalpindi",
+    "weatherUrl": "https://www.accuweather.com/en/pk/rawalpindi/260625/weather-forecast/260625",
+    "aqiUrl": "https://www.accuweather.com/en/pk/rawalpindi/260625/air-quality-index/260625",
+    "aqiData": {
+      "quality": {
+        "scale": "Poor",
+        "index": "74",
+        "description": "The air has reached a high level of pollution and is unhealthy for sensitive groups. Reduce time spent outside if you are feeling symptoms such as difficulty breathing or throat irritation."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Cool with partial sunshine",
+      "tonight": " Clear and chilly",
+      "current": {
+        "temperature": "16°C",
+        "weather": "Partly sunny"
+      },
+      "wind": "E 24 km/h",
+      "collectionTime": "4:50 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976631"
+    },
+    "name": "peshawar",
+    "weatherUrl": "https://www.accuweather.com/en/pk/peshawar/259370/weather-forecast/259370",
+    "aqiUrl": "https://www.accuweather.com/en/pk/peshawar/259370/air-quality-index/259370",
+    "aqiData": {
+      "quality": {
+        "scale": "Fair",
+        "index": "48",
+        "description": "The air quality is generally acceptable for most individuals. However, sensitive groups may experience minor to moderate symptoms from long-term exposure."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Becoming windier and cooler with sun and clouds",
+      "tonight": " Partly cloudy and chilly",
+      "current": {
+        "temperature": "11°C",
+        "weather": "Cloudy"
+      },
+      "wind": "NW 33 km/h",
+      "collectionTime": "4:50 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976632"
+    },
+    "name": "faisalabad",
+    "weatherUrl": "https://www.accuweather.com/en/pk/faisalabad/260626/weather-forecast/260626",
+    "aqiUrl": "https://www.accuweather.com/en/pk/faisalabad/260626/air-quality-index/260626",
+    "aqiData": {
+      "quality": {
+        "scale": "Fair",
+        "index": "22",
+        "description": "The air quality is generally acceptable for most individuals. However, sensitive groups may experience minor to moderate symptoms from long-term exposure."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Sunshine",
+      "tonight": " Clear and chilly",
+      "current": {
+        "temperature": "19°C",
+        "weather": "Sunny"
+      },
+      "wind": "SSE 15 km/h",
+      "collectionTime": "4:51 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976633"
+    },
+    "name": "quetta",
+    "weatherUrl": "https://www.accuweather.com/en/pk/quetta/257185/weather-forecast/257185",
+    "aqiUrl": "https://www.accuweather.com/en/pk/quetta/257185/air-quality-index/257185",
+    "aqiData": {
+      "quality": {
+        "scale": "Poor",
+        "index": "90",
+        "description": "The air has reached a high level of pollution and is unhealthy for sensitive groups. Reduce time spent outside if you are feeling symptoms such as difficulty breathing or throat irritation."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Turning sharply colder with sunshine and patchy clouds",
+      "tonight": " Mainly clear and very coldLo: -8°",
+      "current": {
+        "temperature": "2°C",
+        "weather": "Partly sunny"
+      },
+      "wind": "NW 23 km/h",
+      "collectionTime": "4:51 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976634"
+    },
+    "name": "gujranwala",
+    "weatherUrl": "https://www.accuweather.com/en/pk/gujranwala/260623/weather-forecast/260623",
+    "aqiUrl": "https://www.accuweather.com/en/pk/gujranwala/260623/air-quality-index/260623",
+    "aqiData": {
+      "quality": {
+        "scale": "Unhealthy",
+        "index": "107",
+        "description": "Health effects can be immediately felt by sensitive groups. Healthy individuals may experience difficulty breathing and throat irritation with prolonged exposure. Limit outdoor activity."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Less humid with plenty of sunshine",
+      "tonight": " Clear and chilly",
+      "current": {
+        "temperature": "19°C",
+        "weather": "Sunny"
+      },
+      "wind": "E 15 km/h",
+      "collectionTime": "4:51 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976635"
+    },
+    "name": "hyderabad",
+    "weatherUrl": "https://www.accuweather.com/en/pk/hyderabad/261159/weather-forecast/261159",
+    "aqiUrl": "https://www.accuweather.com/en/pk/hyderabad/261159/air-quality-index/261159",
+    "aqiData": {
+      "quality": {
+        "scale": "Fair",
+        "index": "36",
+        "description": "The air quality is generally acceptable for most individuals. However, sensitive groups may experience minor to moderate symptoms from long-term exposure."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Sunny and delightful",
+      "tonight": " Clear",
+      "current": {
+        "temperature": "23°C",
+        "weather": "Sunny"
+      },
+      "wind": "SW 9 km/h",
+      "collectionTime": "4:51 PM"
+    },
+    "emails": []
+  },
+  {
+    "_id": {
+      "$oid": "65e460e53344e6e307976636"
+    },
+    "name": "multan",
+    "weatherUrl": "https://www.accuweather.com/en/pk/multan/260624/weather-forecast/260624",
+    "aqiUrl": "https://www.accuweather.com/en/pk/multan/260624/air-quality-index/260624",
+    "aqiData": {
+      "quality": {
+        "scale": "Fair",
+        "index": "30",
+        "description": "The air quality is generally acceptable for most individuals. However, sensitive groups may experience minor to moderate symptoms from long-term exposure."
+      },
+      "pollutants": {}
+    },
+    "weatherData": {
+      "today": " Mostly sunny",
+      "tonight": " Clear and chilly",
+      "current": {
+        "temperature": "19°C",
+        "weather": "Partly sunny"
+      },
+      "wind": "NE 11 km/h",
+      "collectionTime": "4:52 PM"
+    },
+    "emails": []
+  }
+]

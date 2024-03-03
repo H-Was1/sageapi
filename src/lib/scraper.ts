@@ -17,7 +17,7 @@ const presets = {
 
 export const scrapeWeather = async (weatherUrl: string) => {
   const browser = await puppeteerExtra.launch({
-    headless: false,
+    // headless: false,
   });
   const Page = await browser.newPage();
   await Page.setGeolocation(presets.geo);
@@ -33,7 +33,7 @@ export const scrapeWeather = async (weatherUrl: string) => {
 
 export const scrapeAqi = async (aqiUrl: string) => {
   const browser = await puppeteerExtra.launch({
-    headless: false,
+    // headless: false,
   });
   const Page = await browser.newPage();
   await Page.setGeolocation(presets.geo);
