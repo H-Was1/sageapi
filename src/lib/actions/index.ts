@@ -20,17 +20,6 @@ export async function getCity(name: string) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 export async function updateAll() {
   try {
     const cities = await getAllCities();
@@ -46,14 +35,6 @@ export async function updateAll() {
     console.error("ERROR: updating daily data- " + error.message);
   }
 }
-
-
-
-
-
-
-
-
 
 export async function addEmail(city: string, email: string) {
   try {
