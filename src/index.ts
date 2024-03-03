@@ -1,5 +1,5 @@
-import { addEmail, getCity, unsub, updateAll } from "./lib/actions";
+import { scrapeAqi } from "./lib/scraper";
 
 (async function () {
-  unsub("working2");
+  
 })();

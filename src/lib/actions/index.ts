@@ -19,10 +19,21 @@ export async function getCity(name: string) {
     console.error(error);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 export async function updateAll() {
   try {
     const cities = await getAllCities();
-    let i = 1;
     for (const city of cities) {
       const aqi = await scrapeAqi(city.aqiUrl);
       const weather = await scrapeWeather(city.weatherUrl);
@@ -30,12 +41,20 @@ export async function updateAll() {
         { _id: city._id },
         { $set: { aqiData: aqi, weatherData: weather } }
       );
-      // console.log(`${i} : done`);
     }
   } catch (error) {
     console.error("ERROR: updating daily data- " + error.message);
   }
 }
+
+
+
+
+
+
+
+
+
 export async function addEmail(city: string, email: string) {
   try {
     const document = await getCity(city);

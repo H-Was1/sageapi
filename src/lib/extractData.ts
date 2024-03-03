@@ -139,22 +139,22 @@ export async function extractAqi(data: string) {
   const aqiData = {
     quality: { scale: $scale, index: $index, description: $description },
     pollutants: {
-      NO2: {
+      no2: {
         value: $no2Value,
         description: $no2description,
         conclusion: $no2conclusion,
       },
-      ["PM2.5"]: {
+      ["pm2.5"]: {
         value: $pm2Value,
         description: $pm2description,
         conclusion: $pm2conclusion,
       },
-      PM10: {
+      pm10: {
         value: $pm10Value,
         description: $pm10description,
         conclusion: $pm10conclusion,
       },
-      O3: {
+      o3: {
         value: $o3Value,
         description: $o3description,
         conclusion: $o3conclusion,
