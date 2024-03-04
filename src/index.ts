@@ -23,7 +23,7 @@ import {
   removeEmail,
   renew,
 } from "./lib/controllers/controllers";
-import { sendAll } from "./lib/actions";
+import { sendAll, updateAll } from "./lib/actions";
 
 // Start express app and server
 const app = express();
@@ -44,10 +44,10 @@ if (process.env.NODE_ENV === "development") {
 }
 
 //Add routes here
-sendAll();
+// updateAll();
 app.post("/api/v1/email", addEmail);
 app.delete("/api/v1/email/:email", removeEmail);
-app.get("/api/v1/cities/update", renew, sendAll);
+app.get("/api/v1/cities/update", renew);
 app.get("/api/v1/cities/:name", getOne);
 app.get("/api/v1/cities", getAll);
 // .post(addOne)

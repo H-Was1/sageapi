@@ -5,6 +5,7 @@ import {
   getCity,
   unsubscribe,
   updateAll,
+  sendAll,
   // createCity,
 } from "../actions";
 import express, { Request, Response } from "express";
@@ -68,6 +69,7 @@ export const renew = async (req: Request, res: Response) => {
     return res.status(400).json({
       status: "Bad request",
     });
+  await sendAll();
   res.status(200).json({
     status: "Success",
     message: "Data updated successfully",

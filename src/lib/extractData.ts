@@ -99,9 +99,7 @@ export async function extractAqi(data: string) {
 
   const $pm2Value = $(aqiDataSelectors.pollutants.PM25.value).text();
 
-  const $pm2conclusion = $(
-    aqiDataSelectors.pollutants.PM25.conclusion
-  ).text();
+  const $pm2conclusion = $(aqiDataSelectors.pollutants.PM25.conclusion).text();
   //NO2
 
   //
@@ -145,6 +143,5 @@ export async function extractAqi(data: string) {
       },
     },
   };
-  // return aqiData;
-  console.log(aqiData);
+  return aqiData;
 }

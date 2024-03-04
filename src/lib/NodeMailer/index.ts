@@ -70,7 +70,9 @@ export async function generateEmailBody(city: CITY, type: string) {
             <em>Description:</em> Breathing in high levels of Nitrogen Dioxide increases the risk of respiratory problems.
         </li>
     </ul>
-    <p style="margin-top: 20px;">For more detailed information, please visit:</p>
+    <p style="margin-top: 20px;">For more detailed information, please visit: <a href="https://airsage.vercel.app/${city.name}" target="_blank">
+    AirSage
+  </a></p>
     <p style="font-size: 12px; color: #666; margin-top: 20px;">This email was sent to you because you have subscribed to receive updates about <span style="text-transform: capitalize;">${city.name}</span>'s weather and air quality. If you wish to unsubscribe, <a href="https://airsage.vercel.app/unsub" target="_blank">
     Click Here!
   </a></p>
@@ -139,9 +141,13 @@ export async function generateEmailBody(city: CITY, type: string) {
 }
 const transporter = nodemailer.createTransport({
   pool: true,
-  service: "hotmail",
+  // service: "hotmail",
   //   host: "outlook",
-  port: 2525,
+  // port: 2525,
+  service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.EMAIL_PASSWORD,
