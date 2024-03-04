@@ -94,7 +94,7 @@ export async function generateEmailBody(city: CITY, type: string) {
       </p>
       <h3 style="font-size: 18px; margin-top: 20px;">Air Quality Index (AQI)</h3>
       <p>
-          <strong>Quality:</strong> ${city.aqiData.quality}
+          <strong>Quality:</strong> ${city.aqiData.quality.scale}
           <br>
           <strong>Index:</strong> ${city.aqiData.quality.index}
           <br>
@@ -108,7 +108,7 @@ export async function generateEmailBody(city: CITY, type: string) {
               <em>Description:</em> Fine Particulate Matter are inhalable pollutant particles with a diameter less than 2.5 micrometers that can enter the lungs and bloodstream, resulting in serious health issues.
           </li>
           <li style="margin-bottom: 5px;">
-              <strong>PM2.5:</strong> Value ${city.aqiData.pollutants["pm2.5"].value}, ${city.aqiData.pollutants["pm2.5"].conclusion}
+              <strong>PM2.5:</strong> Value ${city.aqiData.pollutants.pm25.value}, ${city.aqiData.pollutants.pm25.conclusion}
               <br>
               <em>Description:</em> Particulate Matter are inhalable pollutant particles with a diameter less than 10 micrometers.
           </li>
@@ -140,6 +140,7 @@ export async function generateEmailBody(city: CITY, type: string) {
 const transporter = nodemailer.createTransport({
   pool: true,
   service: "hotmail",
+  //   host: "outlook",
   port: 2525,
   auth: {
     user: process.env.EMAIL,

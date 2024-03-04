@@ -15,7 +15,7 @@ export interface CITY {
 
         conclusion: { type: String; required: true };
       };
-      "pm2.5": {
+      pm25: {
         value: { type: String; required: true };
 
         conclusion: { type: String; required: true };

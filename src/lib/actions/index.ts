@@ -20,47 +20,48 @@ export async function getCity(name: string) {
   }
 }
 
-// export async function updateAll() {
-//   try {
-//     const cities = await getAllCities();
-
-//     for (const city of cities) {
-//       const aqi = await scrapeAqi(city.aqiUrl);
-//       const weather = await scrapeWeather(city.weatherUrl);
-//       await City.findByIdAndUpdate(
-//         { _id: city._id },
-//         { $set: { aqiData: aqi, weatherData: weather } }
-//       );
-//     }
-//     return 1;
-//   } catch (error) {
-//     console.error("ERROR: updating daily data- " + error.message);
-//     return null;
-//   }
-// }
 export async function updateAll() {
   try {
     const cities = await getAllCities();
 
-    await scrapeAqi(cities[0].aqiUrl);
-
+    for (const city of cities) {
+      const aqi = await scrapeAqi(city.aqiUrl);
+      const weather = await scrapeWeather(city.weatherUrl);
+      await City.findByIdAndUpdate(
+        { _id: city._id },
+        { $set: { aqiData: aqi, weatherData: weather } }
+      );
+    }
     return 1;
   } catch (error) {
     console.error("ERROR: updating daily data- " + error.message);
+    return null;
   }
 }
+// export async function updateAll() {
+//   try {
+//     const cities = await getAllCities();
+
+//     await scrapeAqi(cities[0].aqiUrl);
+
+//     return 1;
+//   } catch (error) {
+//     console.error("ERROR: updating daily data- " + error.message);
+//   }
+// }
 export async function sendAll() {
   try {
     const cities = await getAllCities();
 
     for (const city of cities) {
       const { emails } = city;
+      if (emails.length === 0) return;
       const body = await generateEmailBody(city, "Data");
       sendEmail(body, emails);
     }
     return 1;
   } catch (error) {
-    console.error("ERROR: updating daily data- " + error.message);
+    console.error("ERROR: sending Emails " + error.message);
     return null;
   }
 }

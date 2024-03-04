@@ -30,7 +30,7 @@ const app = express();
 const server = http.createServer(app);
 
 // 1) GLOBAL MIDDLEWARES
-
+app.disable("x-powered-by"); // less hackers know about our stack
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 //Add routes here
-
+sendAll();
 app.post("/api/v1/email", addEmail);
 app.delete("/api/v1/email/:email", removeEmail);
 app.get("/api/v1/cities/update", renew, sendAll);

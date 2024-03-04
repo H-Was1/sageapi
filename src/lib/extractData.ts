@@ -15,7 +15,7 @@ const aqiDataSelectors = {
 
       conclusion: "#pollutants > div:nth-child(1) > h3 > div.category",
     },
-    ["PM2.5"]: {
+    PM25: {
       value:
         "#pollutants > div:nth-child(2) > div.column.desktop-left > div.pollutant-index",
       description: "#pollutants > div:nth-child(2) > h4 > div > div.statement",
@@ -97,10 +97,10 @@ export async function extractAqi(data: string) {
 
   //
 
-  const $pm2Value = $(aqiDataSelectors.pollutants["PM2.5"].value).text();
+  const $pm2Value = $(aqiDataSelectors.pollutants.PM25.value).text();
 
   const $pm2conclusion = $(
-    aqiDataSelectors.pollutants["PM2.5"].conclusion
+    aqiDataSelectors.pollutants.PM25.conclusion
   ).text();
   //NO2
 
@@ -128,7 +128,7 @@ export async function extractAqi(data: string) {
 
         conclusion: $pm10conclusion,
       },
-      ["pm2.5"]: {
+      pm25: {
         value: $pm2Value,
 
         conclusion: $pm2conclusion,

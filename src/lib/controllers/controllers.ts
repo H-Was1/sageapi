@@ -73,3 +73,9 @@ export const renew = async (req: Request, res: Response) => {
     message: "Data updated successfully",
   });
 };
+// export async function se() {
+//   try {
+//   } catch (error) {
+//     console.error("ERROR: sending Emails " + error.message);
+//   }
+// }
