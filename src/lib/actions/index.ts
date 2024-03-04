@@ -1,6 +1,7 @@
 import { scrapeAqi, scrapeWeather } from "../scraper";
 import City from "../model/cities";
 import connectToDB from "../mongoose";
+import { response } from "express";
 
 export async function getAllCities() {
   connectToDB();
@@ -12,8 +13,12 @@ export async function getCity(name: string) {
   connectToDB();
   try {
     const city = await City.findOne({ name });
-
     if (city === null) throw new Error("City is unavailable at right now");
+    if (city === null)
+      return response.json({
+        status: "City Not Found",
+      });
+
     return city;
   } catch (error) {
     console.error(error);
@@ -45,10 +50,14 @@ export async function addEmail(city: string, email: string) {
     const emailPresent = document.emails.includes(email);
     if (emailPresent) throw new Error("Email already exists");
     await City.updateOne({ name: city }, { $push: { emails: email } });
+    return response.json({
+      status: "Email added succesfully",
+    });
   } catch (error) {
     console.error("ERROR: Adding Email " + error.message);
   }
 }
+
 export async function unsub(email: string) {
   try {
     connectToDB();
