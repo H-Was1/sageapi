@@ -91,22 +91,14 @@ export async function extractAqi(data: string) {
   //
 
   const $no2Value = $(aqiDataSelectors.pollutants.NO2.value).text();
-  const $no2description = $(aqiDataSelectors.pollutants.NO2.description)
-    .text()
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
-    .replace("   ", "");
+
   const $no2conclusion = $(aqiDataSelectors.pollutants.NO2.conclusion).text();
   //PM2.5
 
   //
 
   const $pm2Value = $(aqiDataSelectors.pollutants["PM2.5"].value).text();
-  const $pm2description = $(aqiDataSelectors.pollutants["PM2.5"].description)
-    .text()
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
-    .replace("   ", "");
+
   const $pm2conclusion = $(
     aqiDataSelectors.pollutants["PM2.5"].conclusion
   ).text();
@@ -115,22 +107,14 @@ export async function extractAqi(data: string) {
   //
 
   const $pm10Value = $(aqiDataSelectors.pollutants.PM10.value).text();
-  const $pm10description = $(aqiDataSelectors.pollutants.PM10.description)
-    .text()
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
-    .replace("   ", "");
+
   const $pm10conclusion = $(aqiDataSelectors.pollutants.PM10.conclusion).text();
   //O3
 
   //
 
   const $o3Value = $(aqiDataSelectors.pollutants.O3.value).text();
-  const $o3description = $(aqiDataSelectors.pollutants.O3.description)
-    .text()
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
-    .replace("   ", "");
+
   const $o3conclusion = $(aqiDataSelectors.pollutants.O3.conclusion).text();
   //Data
 
@@ -141,22 +125,22 @@ export async function extractAqi(data: string) {
     pollutants: {
       no2: {
         value: $no2Value,
-        description: $no2description,
+
         conclusion: $no2conclusion,
       },
       ["pm2.5"]: {
         value: $pm2Value,
-        description: $pm2description,
+
         conclusion: $pm2conclusion,
       },
       pm10: {
         value: $pm10Value,
-        description: $pm10description,
+
         conclusion: $pm10conclusion,
       },
       o3: {
         value: $o3Value,
-        description: $o3description,
+
         conclusion: $o3conclusion,
       },
     },

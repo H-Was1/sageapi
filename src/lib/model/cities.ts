@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const citySchema = new mongoose.Schema(
+export const citySchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true },
     weatherUrl: { type: String, required: true, unique: true },
@@ -15,22 +15,22 @@ const citySchema = new mongoose.Schema(
       pollutants: {
         no2: {
           value: { type: String, required: true },
-          description: { type: String, required: true },
+
           conclusion: { type: String, required: true },
         },
         "pm2.5": {
           value: { type: String, required: true },
-          description: { type: String, required: true },
+
           conclusion: { type: String, required: true },
         },
         pm10: {
           value: { type: String, required: true },
-          description: { type: String, required: true },
+
           conclusion: { type: String, required: true },
         },
         o3: {
           value: { type: String, required: true },
-          description: { type: String, required: true },
+
           conclusion: { type: String, required: true },
         },
       },

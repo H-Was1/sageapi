@@ -1,6 +1,7 @@
 import { scrapeAqi, scrapeWeather } from "../scraper";
 import City from "../model/cities";
 import connectToDB from "../mongoose";
+import { generateEmailBody, sendEmail } from "../NodeMailer";
 
 export async function getAllCities() {
   connectToDB();
@@ -31,8 +32,25 @@ export async function updateAll() {
         { $set: { aqiData: aqi, weatherData: weather } }
       );
     }
+    return 1;
   } catch (error) {
     console.error("ERROR: updating daily data- " + error.message);
+    return null;
+  }
+}
+export async function sendAll() {
+  try {
+    const cities = await getAllCities();
+
+    for (const city of cities) {
+      const { emails } = city;
+      const body = await generateEmailBody(city, "Data");
+      sendEmail(body, emails);
+    }
+    return 1;
+  } catch (error) {
+    console.error("ERROR: updating daily data- " + error.message);
+    return null;
   }
 }
 
@@ -43,6 +61,8 @@ export async function subscribe(city: string, email: string) {
     if (emailPresent) return undefined as undefined;
 
     await City.updateOne({ name: city }, { $push: { emails: email } });
+    const data = await generateEmailBody(document, "Welcome");
+    sendEmail(data, [email]);
     return 1;
   } catch (error) {
     console.error("ERROR: Adding Email " + error.message);
@@ -62,23 +82,15 @@ export async function unsubscribe(email: string) {
 // for testing purposes
 
 //
+// export async function createCity(
+//   city: string,
+//   aqi: string,
+//   weather: string
+// ): Promise<any> {
+//   const document = await getCity( city:string, aqiUrl:strin, weatherUrl );
+//   if (document) return null;
+//   const aqi = await scrapeAqi(aqiUrl);
+//   const weather = await scrapeWeather(weatherUrl);
+// }
 
 //
-
-// export async function updateAll() {
-//   try {
-//     const cities = await getAllCities();
-//     for (const city of cities) {
-//       const aqi = await scrapeAqi(city.aqiUrl);
-//       const weather = await scrapeWeather(city.weatherUrl);
-
-//       console.log({
-//         aqi,
-//         weather,
-//       });
-//     }
-//     console.log("All data has been logged to the console");
-//   } catch (error) {
-//     console.error("ERROR: updating daily data- " + error.message);
-//   }
-// }
