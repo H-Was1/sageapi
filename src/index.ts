@@ -1,5 +1,1 @@
-import { scrapeAqi } from "./lib/scraper";
-
-(async function () {
-  
-})();
+(async function () {})();

@@ -57,12 +57,12 @@ export async function extractWeather(data: string) {
     .text()
     .replace(/\t/g, "")
     .replace(/\n/g, "")
-    .replace(/Hi:\s\d+°$/, "");
+    .replace(/Hi.*$/, "");
   const $tonight = $(weatherDataSelectors.tonight)
     .text()
     .replace(/\t/g, "")
     .replace(/\n/g, "")
-    .replace(/Lo:\s\d+°$/, "")
+    .replace(/Lo.*$/, "")
     .replace("Tonight:", "");
 
   const $temperature = $(weatherDataSelectors.current.temperature).text();

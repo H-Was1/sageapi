@@ -1,5 +1,6 @@
 const puppeteerExtra = require("puppeteer-extra");
 const Stealth = require("puppeteer-extra-plugin-stealth");
+import { Page } from "puppeteer";
 import { extractAqi, extractWeather } from "./extractData";
 
 puppeteerExtra.use(Stealth());
@@ -22,7 +23,7 @@ export const scrapeWeather = async (weatherUrl: string) => {
   const Page = await browser.newPage();
   await Page.setGeolocation(presets.geo);
   await Page.setUserAgent(presets.useragents);
-
+  await Page.setDefaultNavigationTimeout(0);
   await Page.goto(weatherUrl);
   const Content = await Page.content();
   await browser.close();
@@ -38,7 +39,8 @@ export const scrapeAqi = async (aqiUrl: string) => {
   const Page = await browser.newPage();
   await Page.setGeolocation(presets.geo);
   await Page.setUserAgent(presets.useragents);
-
+  await Page.setDefaultNavigationTimeout(0);
+  await Page.setDefaultNavigationTimeout(0);
   await Page.goto(aqiUrl);
   const Content = await Page.content();
 
