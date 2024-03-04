@@ -9,10 +9,10 @@ const aqiDataSelectors = {
       "#current > div > div > div.content-wrapper > div.air-quality-data-wrapper > h3 > p.statement",
   },
   pollutants: {
-    NO2: {
+    PM10: {
       value:
         "#pollutants > div:nth-child(1) > div.column.desktop-left > div.pollutant-index",
-      description: "#pollutants > div:nth-child(1) > h4 > div > div.statement",
+
       conclusion: "#pollutants > div:nth-child(1) > h3 > div.category",
     },
     ["PM2.5"]: {
@@ -21,10 +21,10 @@ const aqiDataSelectors = {
       description: "#pollutants > div:nth-child(2) > h4 > div > div.statement",
       conclusion: "#pollutants > div:nth-child(2) > h3 > div.category",
     },
-    PM10: {
+    NO2: {
       value:
         "#pollutants > div:nth-child(3) > div.column.desktop-left > div.pollutant-index",
-      description: "#pollutants > div:nth-child(3) > h4 > div > div.statement",
+
       conclusion: "#pollutants > div:nth-child(3) > h3 > div.category",
     },
     O3: {
@@ -86,13 +86,13 @@ export async function extractAqi(data: string) {
   const $scale = $(aqiDataSelectors.quality.scale).text();
   const $description = $(aqiDataSelectors.quality.description).text().trim();
   const $index = $(aqiDataSelectors.quality.index).text().match(/\d+/)[0];
-  //NO2
+  //PM10
 
   //
 
-  const $no2Value = $(aqiDataSelectors.pollutants.NO2.value).text();
+  const $pm10Value = $(aqiDataSelectors.pollutants.PM10.value).text();
 
-  const $no2conclusion = $(aqiDataSelectors.pollutants.NO2.conclusion).text();
+  const $pm10conclusion = $(aqiDataSelectors.pollutants.PM10.conclusion).text();
   //PM2.5
 
   //
@@ -102,13 +102,13 @@ export async function extractAqi(data: string) {
   const $pm2conclusion = $(
     aqiDataSelectors.pollutants["PM2.5"].conclusion
   ).text();
-  //PM10
+  //NO2
 
   //
 
-  const $pm10Value = $(aqiDataSelectors.pollutants.PM10.value).text();
+  const $no2Value = $(aqiDataSelectors.pollutants.NO2.value).text();
 
-  const $pm10conclusion = $(aqiDataSelectors.pollutants.PM10.conclusion).text();
+  const $no2conclusion = $(aqiDataSelectors.pollutants.NO2.conclusion).text();
   //O3
 
   //
@@ -123,20 +123,20 @@ export async function extractAqi(data: string) {
   const aqiData = {
     quality: { scale: $scale, index: $index, description: $description },
     pollutants: {
-      no2: {
-        value: $no2Value,
+      pm10: {
+        value: $pm10Value,
 
-        conclusion: $no2conclusion,
+        conclusion: $pm10conclusion,
       },
       ["pm2.5"]: {
         value: $pm2Value,
 
         conclusion: $pm2conclusion,
       },
-      pm10: {
-        value: $pm10Value,
+      no2: {
+        value: $no2Value,
 
-        conclusion: $pm10conclusion,
+        conclusion: $no2conclusion,
       },
       o3: {
         value: $o3Value,
@@ -145,5 +145,6 @@ export async function extractAqi(data: string) {
       },
     },
   };
-  return aqiData;
+  // return aqiData;
+  console.log(aqiData);
 }

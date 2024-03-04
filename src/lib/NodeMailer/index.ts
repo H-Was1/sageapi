@@ -16,7 +16,6 @@ const Notification = {
 };
 
 export async function generateEmailBody(city: CITY, type: string) {
-  // export async function generateEmailBody(type: string) {
   let subject = "";
   let body = "";
   switch (type) {
@@ -72,7 +71,7 @@ export async function generateEmailBody(city: CITY, type: string) {
         </li>
     </ul>
     <p style="margin-top: 20px;">For more detailed information, please visit:</p>
-    <p style="font-size: 12px; color: #666; margin-top: 20px;">This email was sent to you because you have subscribed to receive updates about Multan's weather and air quality. If you wish to unsubscribe, <a href="https://airsage.vercel.app/unsub" target="_blank">
+    <p style="font-size: 12px; color: #666; margin-top: 20px;">This email was sent to you because you have subscribed to receive updates about <span style="text-transform: capitalize;">${city.name}</span>'s weather and air quality. If you wish to unsubscribe, <a href="https://airsage.vercel.app/unsub" target="_blank">
     Click Here!
   </a></p>
 </div>`;
@@ -80,7 +79,7 @@ export async function generateEmailBody(city: CITY, type: string) {
     case Notification.Data:
       subject = `Your Daily Air Quality Update For City: ${city.name}`;
       body = `<div style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5;">
-      <h2 style="font-size: 20px; margin-bottom: 10px;">Weather and AQI Update for ${city.name}</h2>
+      <h2 style="font-size: 20px; margin-bottom: 10px;">Weather and AQI Update for <span style="text-transform: capitalize;">${city.name}</span></h2>
       <p>
           <strong>Today's Weather:</strong>${city.weatherData.today}
           <br>
@@ -127,7 +126,7 @@ export async function generateEmailBody(city: CITY, type: string) {
       <p style="margin-top: 20px;">For more detailed information, please visit: <a href="https://airsage.vercel.app/${city.name}" target="_blank">
       AirSage
     </a></p>
-      <p style="font-size: 12px; color: #666; margin-top: 20px;">This email was sent to you because you have subscribed to receive updates about Multan's weather and air quality. If you wish to unsubscribe, <a href="https://airsage.vercel.app/unsub" target="_blank">
+      <p style="font-size: 12px; color: #666; margin-top: 20px;">This email was sent to you because you have subscribed to receive updates about <span style="text-transform: capitalize;">${city.name}</span>'s weather and air quality. If you wish to unsubscribe, <a href="https://airsage.vercel.app/unsub" target="_blank">
       Click Here!
     </a></p>
   </div>`;

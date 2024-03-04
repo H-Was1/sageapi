@@ -1,3 +1,4 @@
+//declare environment here
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -23,7 +24,6 @@ import {
   renew,
 } from "./lib/controllers/controllers";
 import { sendAll } from "./lib/actions";
-//declare environment here
 
 // Start express app and server
 const app = express();
