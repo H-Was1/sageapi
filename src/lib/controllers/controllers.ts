@@ -1,4 +1,3 @@
-import cities from "lib/model/cities";
 import {
   subscribe,
   getAllCities,
@@ -8,6 +7,8 @@ import {
   sendAll,
   // createCity,
 } from "../actions";
+
+const moment = require("moment-timezone");
 import express, { Request, Response } from "express";
 export const getAll = async (req: Request, res: Response) => {
   const cities = await getAllCities();
@@ -63,21 +64,16 @@ export const removeEmail = async (req: Request, res: Response) => {
 //   });
 // };
 
-export const renew = async (req: Request, res: Response) => {
-  const update = await updateAll();
-  if (!update)
-    return res.status(400).json({
-      status: "Bad request",
-    });
-  await sendAll();
-  res.status(200).json({
-    status: "Success",
-    message: "Data updated successfully",
-  });
+export const renew = async () => {
+  const now = moment().tz("Asia/Karachi"); // Set timezone to Pakistan Standard Time
+  if (now.hour() === 6 && now.minute() === 30) {
+    console.log("Updating data at 6:30 AM PKT");
+    // Place your data update logic here
+
+    await updateAll();
+
+    //place email sending logic here
+
+    await sendAll();
+  }
 };
-// export async function se() {
-//   try {
-//   } catch (error) {
-//     console.error("ERROR: sending Emails " + error.message);
-//   }
-// }

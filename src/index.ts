@@ -6,6 +6,7 @@ declare global {
     }
   }
 }
+const cron = require("node-cron");
 require("dotenv").config();
 import cors from "cors";
 import http from "http";
@@ -44,13 +45,17 @@ if (process.env.NODE_ENV === "development") {
 }
 
 //Add routes here
-// updateAll();
+
 app.post("/api/v1/email", addEmail);
 app.delete("/api/v1/email/:email", removeEmail);
-app.get("/api/v1/cities/update", renew);
 app.get("/api/v1/cities/:name", getOne);
 app.get("/api/v1/cities", getAll);
+// app.get("/api/v1/cities/update", renew);
 // .post(addOne)
+
+// Schedule a cron job that runs at 6:30 AM PKT
+
+cron.schedule("30 6 * * *", renew);
 
 //add listener here
 
