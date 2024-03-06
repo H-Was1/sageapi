@@ -54,10 +54,11 @@ export async function sendAll() {
     const cities = await getAllCities();
 
     for (const city of cities) {
-      const { emails } = city;
-      if (emails.length === 0) return;
-      const body = await generateEmailBody(city, "Data");
-      sendEmail(body, emails);
+      const emails = city.emails;
+      if (emails.length > 0) {
+        const body = await generateEmailBody(city, "Data");
+        await sendEmail(body, emails);
+      }
     }
     return 1;
   } catch (error) {

@@ -1,6 +1,5 @@
 const puppeteerExtra = require("puppeteer-extra");
 const Stealth = require("puppeteer-extra-plugin-stealth");
-import { Page } from "puppeteer";
 import { extractAqi, extractWeather } from "./extractData";
 
 puppeteerExtra.use(Stealth());
@@ -18,12 +17,32 @@ const presets = {
 
 export const scrapeWeather = async (weatherUrl: string) => {
   const browser = await puppeteerExtra.launch({
-    // headless: false,
+    args: [
+      "--aggressive-cache-discard",
+      "--disable-cache",
+      "--disable-application-cache",
+      "--disable-offline-load-stale-cache",
+      "--disable-gpu-shader-disk-cache",
+      "--media-cache-size=0",
+      "--disk-cache-size=0",
+    ],
   });
   const Page = await browser.newPage();
   await Page.setGeolocation(presets.geo);
   await Page.setUserAgent(presets.useragents);
   await Page.setDefaultNavigationTimeout(0);
+  await Page.setRequestInterception(true);
+  Page.on("request", (req: any) => {
+    if (
+      req.resourceType() == "stylesheet" ||
+      req.resourceType() == "font" ||
+      req.resourceType() == "image"
+    ) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
   await Page.goto(weatherUrl);
   const Content = await Page.content();
   await browser.close();
@@ -35,12 +54,32 @@ export const scrapeWeather = async (weatherUrl: string) => {
 export const scrapeAqi = async (aqiUrl: string) => {
   const browser = await puppeteerExtra.launch({
     // headless: false,
+    args: [
+      "--aggressive-cache-discard",
+      "--disable-cache",
+      "--disable-application-cache",
+      "--disable-offline-load-stale-cache",
+      "--disable-gpu-shader-disk-cache",
+      "--media-cache-size=0",
+      "--disk-cache-size=0",
+    ],
   });
   const Page = await browser.newPage();
   await Page.setGeolocation(presets.geo);
   await Page.setUserAgent(presets.useragents);
   await Page.setDefaultNavigationTimeout(0);
-  await Page.setDefaultNavigationTimeout(0);
+  await Page.setRequestInterception(true);
+  Page.on("request", (req: any) => {
+    if (
+      req.resourceType() == "stylesheet" ||
+      req.resourceType() == "font" ||
+      req.resourceType() == "image"
+    ) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
   await Page.goto(aqiUrl);
   const Content = await Page.content();
 

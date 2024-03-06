@@ -7,6 +7,10 @@ import {
   sendAll,
   // createCity,
 } from "../actions";
+export const cronTime = {
+  hour: 8,
+  minute: 30,
+};
 
 const moment = require("moment-timezone");
 import express, { Request, Response } from "express";
@@ -14,7 +18,7 @@ export const getAll = async (req: Request, res: Response) => {
   const cities = await getAllCities();
   if (cities.length <= 1)
     return res.status(404).json({
-      status: `Failed to get City : ${req.params.name}`,
+      status: `Failed to get Cities : ${req.params.name}`,
     });
   res.status(200).json({
     status: "success",
@@ -66,14 +70,18 @@ export const removeEmail = async (req: Request, res: Response) => {
 
 export const renew = async () => {
   const now = moment().tz("Asia/Karachi"); // Set timezone to Pakistan Standard Time
-  if (now.hour() === 6 && now.minute() === 30) {
-    console.log("Updating data at 6:30 AM PKT");
+  if (now.hour() === cronTime.hour && now.minute() === cronTime.minute) {
+    console.log(`Updating data at ${cronTime.hour}:${cronTime.minute} AM PKT`);
     // Place your data update logic here
 
     await updateAll();
+    console.log("Data has been updated. Now Emails are being sent");
 
     //place email sending logic here
 
-    await sendAll();
+    const email = await sendAll();
+    if (!email) console.log("Email are'nt being sent.");
+
+    console.log("Emails are sent successfully");
   }
 };

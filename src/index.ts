@@ -18,13 +18,14 @@ import cookieParser from "cookie-parser";
 
 import {
   addEmail,
-  // addOne,
+  cronTime,
   getAll,
   getOne,
   removeEmail,
   renew,
 } from "./lib/controllers/controllers";
 import { sendAll, updateAll } from "./lib/actions";
+// sendAll();
 
 // Start express app and server
 const app = express();
@@ -50,12 +51,10 @@ app.post("/api/v1/email", addEmail);
 app.delete("/api/v1/email/:email", removeEmail);
 app.get("/api/v1/cities/:name", getOne);
 app.get("/api/v1/cities", getAll);
-// app.get("/api/v1/cities/update", renew);
-// .post(addOne)
 
-// Schedule a cron job that runs at 6:30 AM PKT
+// Schedule a cron job that runs at 8:30 AM PKT
 
-cron.schedule("30 6 * * *", renew);
+cron.schedule(`${cronTime.minute} ${cronTime.hour} * * *`, renew);
 
 //add listener here
 

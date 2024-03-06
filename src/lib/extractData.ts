@@ -18,7 +18,6 @@ const aqiDataSelectors = {
     PM25: {
       value:
         "#pollutants > div:nth-child(2) > div.column.desktop-left > div.pollutant-index",
-      description: "#pollutants > div:nth-child(2) > h4 > div > div.statement",
       conclusion: "#pollutants > div:nth-child(2) > h3 > div.category",
     },
     NO2: {
@@ -30,7 +29,6 @@ const aqiDataSelectors = {
     O3: {
       value:
         "#pollutants > div:nth-child(4) > div.column.desktop-left > div.pollutant-index",
-      description: "#pollutants > div:nth-child(4) > h4 > div > div.statement",
       conclusion: "#pollutants > div:nth-child(4) > h3 > div.category",
     },
   },
@@ -51,36 +49,6 @@ const weatherDataSelectors = {
     "body > div > div.two-column-page-content > div.page-column-1 > div.page-content.content-module > a.cur-con-weather-card.lbar-panel.content-module > div.title-container > p",
 };
 
-export async function extractWeather(data: string) {
-  const $ = cheerio.load(data);
-  const $today = $(weatherDataSelectors.today)
-    .text()
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
-    .replace(/Hi.*$/, "");
-  const $tonight = $(weatherDataSelectors.tonight)
-    .text()
-    .replace(/\t/g, "")
-    .replace(/\n/g, "")
-    .replace(/Lo.*$/, "")
-    .replace("Tonight:", "");
-
-  const $temperature = $(weatherDataSelectors.current.temperature).text();
-  const $weather = $(weatherDataSelectors.current.weather).text();
-  const $wind = $(weatherDataSelectors.wind).text();
-  const $collectionTime = $(weatherDataSelectors.collectionTime).text().trim();
-  const weatherData = {
-    today: $today,
-    tonight: $tonight,
-    current: {
-      temperature: $temperature,
-      weather: $weather,
-    },
-    wind: $wind,
-    collectionTime: $collectionTime,
-  };
-  return weatherData;
-}
 export async function extractAqi(data: string) {
   const $ = cheerio.load(data);
   const $scale = $(aqiDataSelectors.quality.scale).text();
@@ -144,4 +112,34 @@ export async function extractAqi(data: string) {
     },
   };
   return aqiData;
+}
+export async function extractWeather(data: string) {
+  const $ = cheerio.load(data);
+  const $today = $(weatherDataSelectors.today)
+    .text()
+    .replace(/\t/g, "")
+    .replace(/\n/g, "")
+    .replace(/Hi.*$/, "");
+  const $tonight = $(weatherDataSelectors.tonight)
+    .text()
+    .replace(/\t/g, "")
+    .replace(/\n/g, "")
+    .replace(/Lo.*$/, "")
+    .replace("Tonight:", "");
+
+  const $temperature = $(weatherDataSelectors.current.temperature).text();
+  const $weather = $(weatherDataSelectors.current.weather).text();
+  const $wind = $(weatherDataSelectors.wind).text();
+  const $collectionTime = $(weatherDataSelectors.collectionTime).text().trim();
+  const weatherData = {
+    today: $today,
+    tonight: $tonight,
+    current: {
+      temperature: $temperature,
+      weather: $weather,
+    },
+    wind: $wind,
+    collectionTime: $collectionTime,
+  };
+  return weatherData;
 }
